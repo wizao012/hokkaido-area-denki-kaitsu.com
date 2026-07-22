@@ -131,9 +131,9 @@
       --or-light: #3A8FD0;  /* 電話ボタングラデ上端 */
       --or-vd:    #003E72;  /* 電話ボタン影色 */
       --or-vd2:   #00457E;  /* mid-tel濃色 */
-      --blue:    #7FB929;   /* アクセント黄緑（WEB導線） */
-      --blue-d:  #689B1E;   /* 濃い黄緑（境界・強調） */
-      --blue-l:  #EEF6DC;   /* 淡い黄緑（背景） */
+      --blue:    #2288D4;   /* WEB導線ブルー（メインより明るめ） */
+      --blue-d:  #1A6FB5;   /* 濃いブルー */
+      --blue-l:  #E3F1FB;   /* 淡いブルー */
       --dark:    #1A1A1A;
       --char:    #3C3C3C;
       --mid:     #717171;
@@ -146,6 +146,11 @@
       --link:    #0061A8;
       --green:   #2E8B5A;
       --err:     #D63838;
+      --tel:      #E60012;   /* 電話CTA赤（メイン） */
+      --tel-d:    #B8000F;   /* 電話CTA濃い赤 */
+      --tel-light: #FF3B4A;  /* 電話CTAグラデ上端 */
+      --tel-vd:    #8B000C;  /* 電話CTA影 */
+
     }
 
     html { scroll-behavior: smooth; }
@@ -330,12 +335,12 @@
     .hero-h1 .h1-main {
       display: block;
       font-size: 24px; font-weight: 900;
-      color: var(--or);
+      color: #E60012;
       line-height: 1.25;
       margin-top: 2px;
       letter-spacing: .02em;
     }
-    .hero-h1 .hl-red { color: var(--blue-d); font-weight: 900; }
+    .hero-h1 .hl-red { color: #E60012; font-weight: 900; }
     .hero-h1 .h1-main .hl-red {
       color: var(--err); font-weight: 900;
     }
@@ -555,20 +560,20 @@
 
     /* メインCV - 電話：赤グラデで目立たせる */
     .cv-btn--phone {
-      background: linear-gradient(180deg, var(--or-light) 0%, var(--or) 50%, var(--or-d) 100%);
+      background: linear-gradient(180deg, var(--tel-light) 0%, var(--tel) 50%, var(--tel-d) 100%);
       color: var(--white);
-      box-shadow: 0 4px 12px rgba(0,104,183,.30), inset 0 -2px 0 var(--or-vd);
+      box-shadow: 0 4px 12px rgba(230,0,18,.30), inset 0 -2px 0 var(--tel-vd);
       min-height: 88px;
     }
     /* メインCV - WEB：青グラデで電話と差別化 */
     .cv-btn--web {
-      background: linear-gradient(180deg, #9BD13F 0%, var(--blue) 50%, var(--blue-d) 100%);
+      background: linear-gradient(180deg, #4BA3E0 0%, var(--blue) 50%, var(--blue-d) 100%);
       color: var(--white);
       box-shadow: 0 4px 12px rgba(34,102,221,.30), inset 0 -2px 0 #133A8C;
       min-height: 88px;
     }
     .cv-btn--phone .cv-btn-icon {
-      background: var(--white); color: var(--or);
+      background: var(--white); color: var(--tel);
     }
     .cv-btn--web .cv-btn-icon {
       background: var(--white); color: var(--blue);
@@ -712,12 +717,12 @@
     /* 電話CV（最優先・物理ボタン感のあるタップ可能デザイン） */
     .cv-tel {
       display: block;
-      background: linear-gradient(180deg, var(--or-light) 0%, var(--or) 50%, var(--or-vd2) 100%);
+      background: linear-gradient(180deg, var(--tel-light) 0%, var(--tel) 50%, var(--tel-d) 100%);
       border-radius: 14px;
       padding: 14px 16px 14px;
       text-decoration: none;
-      box-shadow: 0 6px 0 var(--or-vd),
-                  0 8px 16px rgba(0,104,183,.40),
+      box-shadow: 0 6px 0 var(--tel-vd),
+                  0 8px 16px rgba(230,0,18,.40),
                   inset 0 1px 0 rgba(255,255,255,.45),
                   inset 0 -2px 0 rgba(0,0,0,.10);
       position: relative;
@@ -738,8 +743,8 @@
     }
     .cv-tel:active {
       transform: translateY(5px);
-      box-shadow: 0 1px 0 var(--or-vd),
-                  0 2px 4px rgba(0,104,183,.30),
+      box-shadow: 0 1px 0 var(--tel-vd),
+                  0 2px 4px rgba(230,0,18,.30),
                   inset 0 1px 0 rgba(255,255,255,.35),
                   inset 0 -1px 0 rgba(0,0,0,.10);
     }
@@ -755,7 +760,7 @@
     }
     .cv-tel-tag {
       display: inline-flex; align-items: center; gap: 4px;
-      background: var(--white); color: var(--or);
+      background: var(--white); color: var(--tel);
       font-size: 10px; font-weight: 900;
       padding: 3px 9px; border-radius: 99px;
       letter-spacing: .04em;
@@ -785,7 +790,7 @@
     .cv-tel-num::before {
       content: '☎';
       font-size: clamp(17px, 5.2vw, 22px);
-      background: var(--white); color: var(--or);
+      background: var(--white); color: var(--tel);
       width: clamp(30px, 9vw, 36px);
       height: clamp(30px, 9vw, 36px);
       border-radius: 50%;
@@ -969,8 +974,8 @@
       background: var(--white); flex-shrink: 0; position: relative; z-index: 1;
     }
     .step:nth-child(even) .step-num {
-      background: linear-gradient(135deg, var(--blue), var(--blue-d));
-      color: var(--white);
+      background: var(--white);
+      color: var(--or);
     }
     .step-body { padding-top: 5px; flex: 1; min-width: 0; }
     .step-lbl  { font-size: 9px; font-weight: 700; color: var(--or); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 2px; }
@@ -1002,14 +1007,14 @@
     .mid-tel:active { opacity: .92; }
     .mid-tel-tag {
       display: inline-flex; align-items: center; gap: 4px;
-      background: var(--or); color: var(--white);
+      background: var(--tel); color: var(--white);
       font-size: 10px; font-weight: 900;
       padding: 3px 9px; border-radius: 99px;
       letter-spacing: .04em;
       margin: 0 auto 6px;
     }
     .mid-tel-num {
-      color: var(--or); font-size: 26px; font-weight: 900;
+      color: var(--tel); font-size: 26px; font-weight: 900;
       letter-spacing: .03em; line-height: 1.1;
       display: flex; align-items: center; justify-content: center; gap: 7px;
       margin-bottom: 3px;
@@ -1342,7 +1347,7 @@
 
     .form-submit {
       width: 100%;
-      background: linear-gradient(180deg, var(--or-light) 0%, var(--or) 100%);
+      background: linear-gradient(180deg, #4BA3E0 0%, var(--blue) 100%);
       color: var(--white);
       font-size: 15px; font-weight: 900;
       letter-spacing: .03em;
@@ -1668,8 +1673,8 @@
 
     /* 電話ボタン（CV最優先） */
     .sticky-tel {
-      background: linear-gradient(180deg, var(--or-light) 0%, var(--or) 100%);
-      box-shadow: 0 3px 10px rgba(0,104,183,.32);
+      background: linear-gradient(180deg, var(--tel-light) 0%, var(--tel) 100%);
+      box-shadow: 0 3px 10px rgba(230,0,18,.32);
       animation: stickyPulse 2.4s ease-in-out infinite;
     }
     @keyframes stickyPulse {
@@ -1682,7 +1687,7 @@
       border-radius: 50%;
       background: var(--white);
       display: flex; align-items: center; justify-content: center;
-      color: var(--or);
+      color: var(--tel);
     }
     .sticky-tel .sticky-icon svg { width: 18px; height: 18px; fill: currentColor; }
     .sticky-tel .sticky-text {
@@ -1966,14 +1971,14 @@
   <div class="hero-area">
     <div class="hero-area-icon">⚡</div>
     <div class="hero-area-text">
-      <strong style="color:var(--blue-d);">主な対応地域</strong>
+      <strong style="color:var(--or);">主な対応地域</strong>
       <span class="pref">北海道全域（札幌・旭川・函館・釧路・帯広・北見・小樽・室蘭 ほか）</span>
     </div>
   </div>
 </section>
 
 <!-- ══════ CV SECTION（FV内・4ボタンを1枠で囲み中で選ばせる） ══════ -->
-<section class="cv-section">
+<section class="cv-section" id="cv">
   <h2 class="cv-section-title">
     <strong class="hl-red">「電気開通」</strong>のお申し込みはこちら
   </h2>
@@ -2108,7 +2113,7 @@
 </section>
 
 <!-- ══════ FAQ ══════ -->
-<section class="faq">
+<section class="faq" id="faq">
   <h2 class="sec-title">よくあるご質問</h2>
   <div class="faq-list">
     <details>
@@ -2450,8 +2455,8 @@
 <!-- ══════ FOOTER ══════ -->
 <footer>
   <nav class="f-nav">
-    <a href="https://hikkoshi.shinseikatsu-portal.jp/">HOME</a>
-    <a href="https://hikkoshi.shinseikatsu-portal.jp/faq">よくある質問</a>
+    <a href="#">HOME</a>
+    <a href="#faq">よくある質問</a>
     <a href="https://hikkoshi.shinseikatsu-portal.jp/company">運営者情報</a>
     <a href="https://shinseikatsu-portal.jp/privacy/">プライバシーポリシー</a>
   </nav>
