@@ -1855,6 +1855,21 @@
       background: #F0F2F5;
       color: #6B7280;
     }
+
+    /* 一時通電（数日・1日のみ）項目 */
+    .intro-option--temp {
+      border-color: #FFE0B2;
+    }
+    .intro-option--temp .intro-option-icon {
+      background: #FFF3E0;
+      color: #F57C00;
+    }
+    .intro-option--temp:hover, .intro-option--temp:focus-visible {
+      border-color: #F57C00;
+      background: #FFFBF5;
+      box-shadow: 0 4px 14px rgba(245,124,0,.18);
+    }
+
     .intro-option-text {
       flex: 1; min-width: 0; display: flex; flex-direction: column;
     }
@@ -1927,6 +1942,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </span>
         <span class="intro-option-arr">›</span>
       </button>
+      <!-- 一時通電（数日・1日のみ）：地電サイトへ即遷移＋電話動線非表示 -->
+      <a href="https://www.hepco.co.jp/mailpost/mailpost.html" target="_blank" rel="noopener noreferrer" class="intro-option intro-option--temp" data-intent="temp">
+        <span class="intro-option-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 3.5c-2.49 0-4.5 2.01-4.5 4.5s2.01 4.5 4.5 4.5 4.5-2.01 4.5-4.5-2.01-4.5-4.5-4.5zm1.95 6.15L11.5 16.7V13.5h1v2.79l1.65 1.65-.7.71z"/></svg>
+        </span>
+        <span class="intro-option-text">
+          <span class="intro-option-label">数日・1日のみ<br>通電をご希望の方</span>
+          <span class="intro-option-sub"><span class="em-strong">ハウスクリーニング・物件清掃・空き家管理</span>など短期間のご利用</span>
+        </span>
+        <span class="intro-option-arr">›</span>
+      </a>
 
       <!-- 既存契約：電話動線を非表示にしてほくでんへ即遷移（戻り不可） -->
       <a href="https://www.hepco.co.jp/mailpost/mailpost.html" target="_blank" rel="noopener noreferrer" class="intro-option intro-option--alt" data-intent="contract">
@@ -2791,7 +2817,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             // 電気開始：モーダル閉じる
             modal.classList.remove('is-show');
             document.body.style.overflow = '';
-          } else if (intent === 'contract') {
+          } else if (intent === 'contract' || intent === 'temp') {
             // 現在のご契約：電話動線を非表示にし、即ほくでんへ遷移（aタグのデフォルト動作）
             document.body.classList.add('contract-mode');
             // モーダルは閉じる（別タブで遷移するので背景は契約モードで残す）
