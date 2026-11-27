@@ -1759,7 +1759,6 @@
       .h-name-area { font-size: 15px; }
       .h-icon { width: 28px; height: 28px; }
       .h-icon svg { width: 16px; height: 16px; }
-      .h-badge-main { font-size: 12px; padding: 8px 11px; }
       .h-tel a { font-size: 14px; }
       .hero-badges { max-width: 270px; }
       .badge { font-size: 10px; padding: 4px 7px; }
@@ -1912,6 +1911,42 @@
     /* イタリック無効化（em / strongのstyle調整） */
     em, strong { font-style: normal; }
     strong.hl-red, em.hl-red { color: var(--err); font-weight: 900; font-style: normal; }
+
+    @media (max-width: 519px) {
+      .h-name-area { line-height: 1.25; }
+    }
+
+    /* ブランドアイコンと北海道電力エリアの見出し */
+    .h-icon.h-icon--brand {
+      width: 34px; height: 34px; background: none; box-shadow: none; border-radius: 0;
+    }
+    .h-icon.h-icon--brand svg, .h-icon.h-icon--brand img { width: 34px; height: 34px; }
+    .h-name-suffix {
+      font-size: 10px; font-weight: 500; color: var(--mid); letter-spacing: .06em;
+    }
+    .h-name .h-name-area { font-size: 21px; font-weight: 900; letter-spacing: .03em; }
+    .hero-h1 .h1-area {
+      font-size: 30px; font-weight: 900; letter-spacing: .04em; margin-bottom: 0;
+    }
+    .hero-h1 .h1-area small {
+      font-size: 13px; font-weight: 500; color: var(--mid); margin-left: 6px; letter-spacing: .06em;
+    }
+    @media (max-width: 400px) {
+      .h-icon.h-icon--brand, .h-icon.h-icon--brand svg, .h-icon.h-icon--brand img { width: 30px; height: 30px; }
+      .h-name .h-name-area { font-size: 18px; }
+      .h-badge-main { font-size: 12px; padding: 8px 11px; }
+    }
+    @media (max-width: 360px) {
+      .hero-h1 .h1-area { font-size: 26px; }
+      .area-ribbon .rib-tag { font-size: 10px; }
+      .area-ribbon .rib-main { font-size: 14px; }
+    }
+    @media (max-width: 355px) {
+      .h-logo { gap: 7px; }
+      .h-name .h-name-area { font-size: 16px; }
+      .h-name-suffix { font-size: 9px; }
+      .h-badge-main { font-size: 11px; padding: 7px 8px; gap: 3px; }
+    }
   </style>
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -1974,29 +2009,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ══════ HEADER ══════ -->
 <header class="header">
   <div class="h-logo">
-    <div class="h-icon">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M7 2v11h3v9l7-12h-4l4-8z" fill="#FFFFFF"/>
-      </svg>
-    </div>
+    <div class="h-icon h-icon--brand"><img src="data:image/png;base64,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" alt="" width="34" height="34"></div>
     <div class="h-name">
-      <span class="h-name-area">新規契約・再開・引越しの方</span>
+      <span class="h-name-area">北海道電力</span><span class="h-name-suffix">エリア</span>
     </div>
   </div>
   <div class="h-badge">
-    <span class="h-badge-main">電気の開通窓口</span>
+    <span class="h-badge-main">電気開通 専用窓口</span>
   </div>
 </header>
 
 <!-- ══════ AREA RIBBON（電気開通専用窓口を強調） ══════ -->
 <div class="area-ribbon">
-  <strong class="rib-main">電気開通専用窓口</strong>
+  <strong class="rib-main">電気開通専用窓口</strong><span class="rib-sep">|</span><span class="rib-tag">新規契約・再開・引越しの方</span>
 </div>
 
 <!-- ══════ HERO ══════ -->
 <section class="hero">
-  <div class="hero-label">電気の開通窓口</div>
+  <div class="hero-label">電気開通 受付センター</div>
   <h1 class="hero-h1">
+    <span class="h1-area">北海道電力<small>エリア</small></span>
     <span class="h1-main"><strong class="hl-red">電気開通</strong>お手続き</span>
     <span class="h1-sub">お電話・WEBで承ります</span>
   </h1>
@@ -2011,7 +2043,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-area">
     <div class="hero-area-icon">⚡</div>
     <div class="hero-area-text">
-      <strong style="color:var(--or);">主な対応地域</strong>
+      <strong style="color:var(--or);">北海道電力エリア 主な対応地域</strong>
       <span class="pref">北海道全域（札幌・旭川・函館・釧路・帯広・北見・小樽・室蘭 ほか）</span>
     </div>
   </div>
